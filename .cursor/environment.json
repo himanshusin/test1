@@ -1,0 +1,6 @@
+{
+  "name": "Tiny Wins",
+  "user": "ubuntu",
+  "install": "test -f index.html && test -f app.js && test -f styles.css",
+  "start": "exec python3 -m http.server 4173 --bind 0.0.0.0"
+}
