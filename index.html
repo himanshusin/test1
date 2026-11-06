@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tiny Wins is a calm, private daily habit tracker."
+    />
+    <title>Tiny Wins — Daily habit tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Tiny Wins home">
+          <span class="brand-mark">✦</span>
+          <span>Tiny Wins</span>
+        </a>
+        <p class="today" id="today"></p>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">Your daily reset</p>
+        <h1>Small steps,<br /><em>beautifully done.</em></h1>
+        <p class="intro">
+          Choose a few things that matter today. No streak anxiety, no noisy
+          dashboards — just gentle momentum.
+        </p>
+      </section>
+
+      <section class="dashboard" aria-labelledby="habits-heading">
+        <div class="progress-card">
+          <div class="progress-copy">
+            <div>
+              <p class="card-label">Today’s progress</p>
+              <p class="progress-message" id="progress-message">
+                A fresh page is waiting.
+              </p>
+            </div>
+            <div class="progress-count" aria-live="polite">
+              <strong id="completed-count">0</strong>
+              <span id="total-count">/ 0</span>
+            </div>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Daily habit progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="habits-header">
+          <div>
+            <p class="card-label">Today’s intentions</p>
+            <h2 id="habits-heading">Make today count</h2>
+          </div>
+          <button class="add-button" id="open-dialog" type="button">
+            <span aria-hidden="true">＋</span> Add intention
+          </button>
+        </div>
+
+        <ul class="habit-list" id="habit-list" aria-live="polite"></ul>
+        <div class="empty-state" id="empty-state" hidden>
+          <span>☀</span>
+          <h3>Your day is wide open</h3>
+          <p>Add one small intention to get started.</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>Made for the quietly ambitious.</p>
+        <button class="text-button" id="clear-completed" type="button">
+          Clear completed
+        </button>
+      </footer>
+    </main>
+
+    <dialog id="habit-dialog">
+      <form method="dialog" id="habit-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">One small step</p>
+            <h2>Add an intention</h2>
+          </div>
+          <button
+            class="close-button"
+            type="button"
+            id="close-dialog"
+            aria-label="Close dialog"
+          >
+            ×
+          </button>
+        </div>
+
+        <label for="habit-name">What would make today feel good?</label>
+        <input
+          id="habit-name"
+          name="habit"
+          type="text"
+          maxlength="60"
+          autocomplete="off"
+          placeholder="e.g. Take a 20 minute walk"
+          required
+        />
+
+        <fieldset>
+          <legend>Choose a symbol</legend>
+          <div class="symbol-options">
+            <label><input type="radio" name="symbol" value="☀" checked /><span>☀</span></label>
+            <label><input type="radio" name="symbol" value="✦" /><span>✦</span></label>
+            <label><input type="radio" name="symbol" value="◒" /><span>◒</span></label>
+            <label><input type="radio" name="symbol" value="♡" /><span>♡</span></label>
+            <label><input type="radio" name="symbol" value="↗" /><span>↗</span></label>
+          </div>
+        </fieldset>
+
+        <button class="submit-button" type="submit">Add to my day</button>
+      </form>
+    </dialog>
+
+    <template id="habit-template">
+      <li class="habit-item">
+        <button class="check-button" type="button" aria-label="Mark complete">
+          <span class="checkmark">✓</span>
+        </button>
+        <span class="habit-symbol"></span>
+        <span class="habit-name"></span>
+        <button class="delete-button" type="button" aria-label="Delete intention">×</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
